@@ -1,17 +1,26 @@
 #Sistema de Registro y Evaluación
 
-print("=" * 50)
-print("   SISTEMA DE REGISTRO Y EVALUACIÓN DE ESTUDIANTES")
-print("=" * 50)
+print("=" * 60)
+print("     SISTEMA DE REGISTRO Y EVALUACIÓN DE ESTUDIANTES")
+print("=" * 60)
+
 print("\n¡Bienvenido al sistema académico!")
 print("Se registrarán 3 estudiantes.")
 print("Las calificaciones deben estar entre 0 y 100.")
 print("La nota mínima para aprobar es 60.")
-print("=" * 50)
+
+print("\nESCALA DE APRENDIZAJE")
+print("AI: Menor de 60 - Aprendizaje Inicial")
+print("AF: 60 a 75 - Aprendizaje Fundamental")
+print("AS: 76 a 89 - Aprendizaje Satisfactorio")
+print("AA: 90 a 100 - Aprendizaje Avanzado")
+
+print("=" * 60)
 
 estudiantes = []
 calificaciones = []
 notas_finales = []
+
 
 def ingresar_nota(parcial):
     try:
@@ -33,6 +42,7 @@ def calcular_nota_final(nota1, nota2):
 
 
 for i in range(3):
+
     print(f"\n--- Registro del estudiante {i + 1} ---")
 
     nombre = input("Ingrese el nombre: ")
@@ -48,26 +58,37 @@ for i in range(3):
     notas_finales.append(nota_final)
 
 
-print("\n" + "=" * 50)
-print("             REPORTE ACADÉMICO")
-print("=" * 50)
+print("\n" + "=" * 60)
+print("                    REPORTE ACADÉMICO")
+print("=" * 60)
 
 for i in range(3):
+
     nota = notas_finales[i]
 
+    # Estado académico
     if nota < 60:
         estado = "REPROBADO"
-    elif nota > 95:
-        estado = "SOBRESALIENTE"
     else:
         estado = "APROBADO"
 
-    print(f"\nEstudiante: {estudiantes[i]}")
-    print(f"Parcial 1: {calificaciones[i][0]}")
-    print(f"Parcial 2: {calificaciones[i][1]}")
-    print(f"Nota final: {nota:.2f}")
-    print(f"Estado académico: {estado}")
+    # Escala de aprendizaje
+    if nota < 60:
+        escala = "AI - Aprendizaje Inicial"
+    elif nota <= 75:
+        escala = "AF - Aprendizaje Fundamental"
+    elif nota <= 89:
+        escala = "AS - Aprendizaje Satisfactorio"
+    else:
+        escala = "AA - Aprendizaje Avanzado"
 
-print("\n" + "=" * 50)
-print("        FIN DEL REPORTE ACADÉMICO")
-print("=" * 50)
+    print(f"\nEstudiante: {estudiantes[i]}")
+    print(f"Parcial 1: {calificaciones[i][0]:.2f}")
+    print(f"Parcial 2: {calificaciones[i][1]:.2f}")
+    print(f"Nota final: {nota:.2f}")
+    print(f"Estado: {estado}")
+    print(f"Escala: {escala}")
+
+print("\n" + "=" * 60)
+print("              FIN DEL REPORTE ACADÉMICO")
+print("=" * 60)
